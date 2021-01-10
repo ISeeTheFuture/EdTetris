@@ -180,7 +180,6 @@
     <ClInclude Include="TetrominoT.h" />
     <ClInclude Include="TetrominoZ.h" />
     <ClInclude Include="value.h" />
-    <ClInclude Include="Macro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

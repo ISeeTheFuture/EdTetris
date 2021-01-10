@@ -18,8 +18,14 @@ TetrominoManager::TetrominoManager() : m_pCurTetromino(NULL), m_pNextTetromino(N
 }
 
 TetrominoManager::~TetrominoManager() {
-	SAFE_DELETE(m_pCurTetromino);
-	SAFE_DELETE(m_pNextTetromino);
+	if (m_pCurTetromino) {
+		delete m_pCurTetromino;
+		m_pCurTetromino = NULL;
+	}
+	if (m_pNextTetromino) {
+		delete m_pNextTetromino;
+		m_pNextTetromino = NULL;
+	}
 }
 
 void TetrominoManager::UpdatePos() {
@@ -32,7 +38,10 @@ void TetrominoManager::UpdatePos() {
 			// 지우기 전 블럭 추가.
 			pStage->AddBlock(m_pCurTetromino, m_pCurTetromino->GetPosition());
 			
-			SAFE_DELETE(m_pCurTetromino);
+			if (m_pCurTetromino) {
+				delete m_pCurTetromino;
+				m_pCurTetromino = NULL;
+			}
 			
 			m_pCurTetromino = m_pNextTetromino;
 			m_pCurTetromino->SetPosition(4, 0); // 새로운 현재 도형의 위치를 초기화.
@@ -95,7 +104,10 @@ Tetromino* TetrominoManager::CreateTetromino(TETROMINO_TYPE eType) {
 
 
 	if (!pTetromino->Init()) {
-		SAFE_DELETE(pTetromino);
+		if (pTetromino) {
+			delete pTetromino;
+			pTetromino = NULL;
+		}
 		return NULL;
 	}
 

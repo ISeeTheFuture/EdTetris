@@ -20,7 +20,10 @@ public:
 	}
 
 	static void DestroyInst() {
-		SAFE_DELETE(m_pInst);
+		if (m_pInst) {
+			delete m_pInst;
+			m_pInst = NULL;
+		}
 	}
 
 private:

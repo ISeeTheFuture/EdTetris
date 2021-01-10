@@ -8,7 +8,6 @@
 
 using namespace std;
 
-#include "Macro.h"
 #include "Flags.h"
 
 #define STAGE_WIDTH 10
